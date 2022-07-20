@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout (~{::title}, ~{::main}, _, ~{::scripts})}">
+<head>
+  <title>Lista de Clientes</title>
+</head>
+<body>
+  <main>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>E-mail</th>
+                  <th>Telefone</th>
+                  <th>Cidade</th>
+                  <th>Estado</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="cliente : ${clientes}">
+                  <td th:text="${cliente.id}">183</td>
+                  <td th:text="${cliente.nome}">Clara Giovana Daniela Duarte</td>
+                  <td th:text="${cliente.email}">clara_giovana@gmail.com</td>
+                  <td th:text="${cliente.telefone}">(96) 98195-9127</td>
+                  <td th:text="${cliente.endereco.cidade}">Rio de Janeiro</td>
+                  <td th:text="${cliente.endereco.uf}">RJ</td>
+                  <td>
+                    <div class="btn-group">
+                      <a type="button" data-toggle="popover" data-placement="top" data-content="Detalhes" data-trigger="hover" class="btn btn-primary" th:href="@{/clientes/{id} (id=${cliente.id})}">
+                        <i class="fas fa-eye"></i>
+                      </a>
+                      <a type="button" data-toggle="popover" data-placement="top" data-content="Editar" data-trigger="hover" class="btn btn-warning" th:href="@{/clientes/{id}/editar (id=${cliente.id})}">
+                        <i class="fas fa-edit"></i>
+                      </a>
+                      <a 
+                        type="button" data-toggle="popover" data-placement="top" 
+                        data-content="Remover" data-trigger="hover" class="btn btn-danger" 
+                        th:href="@{/clientes/{id}/excluir (id=${cliente.id})}" 
+                        onclick="return confirm('Tem certeza que deseja excluir o cliente?');"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </a>
+                    </div>
+                  <td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <th:block th:fragment="scripts">
+    <script>
+      $(function () {
+        $('[data-toggle="popover"]').popover()
+      })
+    </script>
+  </th:block>
+</body>
+</html>

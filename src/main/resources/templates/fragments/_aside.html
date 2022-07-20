@@ -1,0 +1,114 @@
+<!-- Main Sidebar Container -->
+<aside th:fragment="aside" class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a th:href="@{/}" class="brand-link">
+    <img th:src="@{/img/tw-logo.png}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+    <span class="brand-text font-weight-light">TW Projetos</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+              Clientes
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a th:href="@{/clientes/cadastrar}" class="nav-link">
+                <i class="nav-icon fas fa-edit nav-icon"></i>
+                <p>Cadastrar</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a th:href="@{/clientes}" class="nav-link">
+                <i class="fas fa-table nav-icon"></i>
+                <p>Listar</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-user-tie"></i>
+            <p>
+              Funcionário
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a th:href="@{/funcionarios/cadastrar}" class="nav-link">
+                <i class="nav-icon fas fa-edit nav-icon"></i>
+                <p>Cadastrar</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a th:href="@{/funcionarios}" class="nav-link">
+                <i class="fas fa-table nav-icon"></i>
+                <p>Listar</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-briefcase"></i>
+            <p>
+              Cargos
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a th:href="@{/cargos/cadastrar}" class="nav-link">
+                <i class="nav-icon fas fa-edit nav-icon"></i>
+                <p>Cadastrar</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a th:href="@{/cargos}" class="nav-link">
+                <i class="fas fa-table nav-icon"></i>
+                <p>Listar</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-project-diagram"></i>
+            <p>
+              Projetos
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a th:href="@{/projetos/cadastrar}" class="nav-link">
+                <i class="nav-icon fas fa-edit nav-icon"></i>
+                <p>Cadastrar</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a th:href="@{/projetos/}" class="nav-link">
+                <i class="fas fa-table nav-icon"></i>
+                <p>Listar</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout (~{::title}, ~{::main}, ~{::styles}, ~{::scripts})}">
+
+<th:block th:fragment="styles">
+  <link rel="stylesheet" th:href="@{/plugins/select2/css/select2.min.css}">
+  <link rel="stylesheet" th:href="@{/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+</th:block>
+
+<head>
+  <title>[[${projeto.id == null ? 'Novo' : 'Editar'}]] Projeto</title>
+</head>
+
+<body>
+  <main>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form method="POST" th:object="${projeto}">
+            <div class="card-body">
+              <input type="hidden" th:field="*{id}">
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" placeholder="App Android" th:field="*{nome}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <textarea class="form-control" rows="4" th:field="*{descricao}"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label>Cliente</label>
+                    <select th:field="*{cliente}" class="form-control select2bs4" style="width: 100%;">
+                      <option th:each="cliente : ${clientes}" th:text="${cliente.nome}" th:value="${cliente.id}"></option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label>Líder do Projeto</label>
+                    <select th:field="*{lider}" class="form-control select2bs4" style="width: 100%;">
+                      <option th:each="lider : ${lideres}" th:text="${lider.nome}" th:value="${lider.id}"></option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label for="dataInicio">Iníado em</label>
+                    <input type="date" class="form-control" th:field="*{dataInicio}">
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label for="dataFim">Finalizado em</label>
+                    <input type="date" class="form-control" th:field="*{dataFim}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label for="orcamentoEstimado">Orçamento estimado</label>
+                    <input type="text" class="form-control" th:field="*{orcamentoEstimado}">
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label for="totalGasto">Total gasto</label>
+                    <input type="text" class="form-control" th:field="*{totalGasto}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label>Equipe</label>
+                    <select th:field="*{equipe}" multiple data-placeholder="Selecione a equipe" class="form-control select2bs4" style="width: 100%;">
+                      <option th:each="funcionario : ${funcionarios}" th:text="${funcionario.nome + ' - ' + funcionario.cargo.nome}" th:value="${funcionario.id}"></option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <th:block th:fragment="scripts">
+    <script th:src="@{/plugins/select2/js/select2.full.min.js}"></script>
+    <script th:src="@{/plugins/jquery-mask/jquery.mask.min.js}"></script>
+    <script>
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
+
+      $('#orcamentoEstimado').mask('#.##0,00', {reverse: true});
+      $('#totalGasto').mask('#.##0,00', {reverse: true});
+    </script>
+  </th:block>
+</body>
+
+</html>

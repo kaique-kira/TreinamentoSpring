@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout (~{::title}, ~{::main}, _, ~{::scripts})}">
+<head>
+  <title>Lista de Cargos</title>
+</head>
+<body>
+  <main>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="cargo : ${cargos}">
+                  <td th:text="${cargo.id}">183</td>
+                  <td th:text="${cargo.nome}">Desenvolvedor(a) Back End Jr.</td>
+                  <td>
+                    <div class="btn-group">
+                      <a type="button" data-toggle="popover" data-placement="top" data-content="Editar" data-trigger="hover" class="btn btn-warning" th:href="@{/cargos/{id}/editar (id=${cargo.id})}">
+                        <i class="fas fa-edit"></i>
+                      </a>
+                      <a 
+                        type="button" data-toggle="popover" data-placement="top" 
+                        data-content="Remover" data-trigger="hover" class="btn btn-danger" 
+                        th:href="@{/cargos/{id}/excluir (id=${cargo.id})}" 
+                        onclick="return confirm('Tem certeza que deseja excluir o cargo?');"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </a>
+                    </div>
+                  <td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <th:block th:fragment="scripts">
+    <script>
+      $(function () {
+        $('[data-toggle="popover"]').popover()
+      })
+    </script>
+  </th:block>
+</body>
+</html>

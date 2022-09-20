@@ -1,22 +1,29 @@
-package br.com.treinaweb.entidades;
+package br.com.treinaweb.twprojetos.entity;
+
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
-import java.time.LocalDate;
-
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
 public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(nullable = false, length = 80)
     private String nome;
@@ -30,7 +37,7 @@ public class Cliente {
     @Column(nullable = false, length = 80, unique = true)
     private String email;
 
-    @Column(name = "data_nascimento", nullable = false)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Column(name = "data_nascismento", nullable = false)
+    @DateTimeFormat(iso = ISO.DATE)
     private LocalDate dataNascimento;
 }

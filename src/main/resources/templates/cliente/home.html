@@ -16,8 +16,8 @@
                   <th>Nome</th>
                   <th>E-mail</th>
                   <th>Telefone</th>
-                  <th>Cidade</th>
-                  <th>Estado</th>
+                  <!-- <th>Cidade</th> -->
+                  <!-- <th>Estado</th> -->
                   <th>Ações</th>
                 </tr>
               </thead>
@@ -27,8 +27,8 @@
                   <td th:text="${cliente.nome}">Clara Giovana Daniela Duarte</td>
                   <td th:text="${cliente.email}">clara_giovana@gmail.com</td>
                   <td th:text="${cliente.telefone}">(96) 98195-9127</td>
-                  <td th:text="${cliente.endereco.cidade}">Rio de Janeiro</td>
-                  <td th:text="${cliente.endereco.uf}">RJ</td>
+                  <!-- <td th:text="${cliente.endereco.cidade}">Rio de Janeiro</td>
+                  <td th:text="${cliente.endereco.uf}">RJ</td> -->
                   <td>
                     <div class="btn-group">
                       <a type="button" data-toggle="popover" data-placement="top" data-content="Detalhes" data-trigger="hover" class="btn btn-primary" th:href="@{/clientes/{id} (id=${cliente.id})}">

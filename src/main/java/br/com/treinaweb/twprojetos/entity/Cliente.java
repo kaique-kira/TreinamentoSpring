@@ -39,7 +39,7 @@ public class Cliente {
     @Column(nullable = false, length = 80, unique = true)
     private String email;
 
-    @Column(name = "data_nascismento", nullable = false)
+    @Column(name = "data_nascimento", nullable = false)
     @DateTimeFormat(iso = ISO.DATE)
     private LocalDate dataNascimento;
 }

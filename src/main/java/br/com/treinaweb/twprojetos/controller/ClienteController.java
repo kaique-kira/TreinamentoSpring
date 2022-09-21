@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.treinaweb.twprojetos.entity.Cliente;
+import br.com.treinaweb.twprojetos.entity.UF;
 import br.com.treinaweb.twprojetos.repository.ClienteRepository;
 
 @Controller
@@ -41,6 +42,8 @@ public class ClienteController {
         ModelAndView modelAndView = new ModelAndView("cliente/formulario");
 
         modelAndView.addObject("cliente", new Cliente());
+        modelAndView.addObject("ufs", UF.values());
+
         return modelAndView;
     }
 
@@ -49,6 +52,7 @@ public class ClienteController {
         ModelAndView modelAndView = new ModelAndView("cliente/formulario");
 
         modelAndView.addObject("cliente", clienteRepository.getOne(id));
+        modelAndView.addObject("ufs", UF.values());
 
         return modelAndView;
     }
@@ -57,7 +61,7 @@ public class ClienteController {
     public String salvar(Cliente cliente) {
         clienteRepository.save(cliente);
 
-        return "redirect:/cliente";
+        return "redirect:/clientes";
     }
 
     @GetMapping("{id}/excluir")

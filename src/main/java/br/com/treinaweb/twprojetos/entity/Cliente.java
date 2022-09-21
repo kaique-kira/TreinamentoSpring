@@ -2,11 +2,14 @@ package br.com.treinaweb.twprojetos.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -42,4 +45,8 @@ public class Cliente {
     @Column(name = "data_nascimento", nullable = false)
     @DateTimeFormat(iso = ISO.DATE)
     private LocalDate dataNascimento;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id_fk", nullable = false)
+    private Endereco endereco;
 }

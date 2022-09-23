@@ -9,8 +9,16 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
 import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @MappedSuperclass
 public abstract class Pessoa extends Entidade {
 

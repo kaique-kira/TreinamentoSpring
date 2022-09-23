@@ -22,7 +22,6 @@ public class ClienteController {
     @GetMapping
     public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView("cliente/home");
-
         modelAndView.addObject("clientes", clienteRepository.findAll());
         return modelAndView;
 

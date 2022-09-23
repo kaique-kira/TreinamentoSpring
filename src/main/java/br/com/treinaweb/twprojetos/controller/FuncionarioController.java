@@ -21,7 +21,7 @@ public class FuncionarioController {
 
     @GetMapping
     public ModelAndView home() {
-        ModelAndView modelAndView = new ModelAndView("funcionarios/home");
+        ModelAndView modelAndView = new ModelAndView("funcionario/home");
 
         modelAndView.addObject("funcionarios", funcionarioRepository.findAll());
         return modelAndView;

@@ -48,13 +48,13 @@ public class CargoController {
     public String salvar(Cargo cargo) {
         cargoRepository.save(cargo);
 
-        return "redirect:/cargo";
+        return "redirect:/cargos";
     }
 
     @GetMapping("{id}/excluir")
     public String excluir(@PathVariable Long id) {
         cargoRepository.deleteById(id);
-        return "redirect:/cargo";
+        return "redirect:/cargos";
     }
 
 }

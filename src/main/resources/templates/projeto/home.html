@@ -31,7 +31,7 @@
                   <td th:text="${projeto.dataFim == null ? '-' : #temporals.format(projeto.dataFim)}">01/01/2020</td>
                   <td th:text="${projeto.cliente.nome}">Clara Giovana Daniela Duarte</td>
                   <td th:text="${projeto.lider.nome}">Augusto Cesar</td>
-                  <td th:text="${#numbers.formatCurrency(projeto.orcamentoEstimado)}">
+                  <td th:text="${#numbers.formatCurrency(projeto.orcamento)}">
                     R$ 5.000,00
                   </td>
                   <td>

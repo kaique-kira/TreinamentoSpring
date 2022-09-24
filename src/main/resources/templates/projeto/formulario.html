@@ -76,14 +76,14 @@
               <div class="row">
                 <div class="col-md-6 col-sm-12">
                   <div class="form-group">
-                    <label for="orcamentoEstimado">Orçamento estimado</label>
-                    <input type="text" class="form-control" th:field="*{orcamentoEstimado}">
+                    <label for="orcamento">Orçamento</label>
+                    <input type="text" class="form-control" th:field="*{orcamento}">
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
                   <div class="form-group">
-                    <label for="totalGasto">Total gasto</label>
-                    <input type="text" class="form-control" th:field="*{totalGasto}">
+                    <label for="gastos">Gastos</label>
+                    <input type="text" class="form-control" th:field="*{gastos}">
                   </div>
                 </div>
               </div>
@@ -119,8 +119,8 @@
         theme: 'bootstrap4'
       })
 
-      $('#orcamentoEstimado').mask('#.##0,00', {reverse: true});
-      $('#totalGasto').mask('#.##0,00', {reverse: true});
+      $('#orcamento').mask('#.##0,00', {reverse: true});
+      $('#gastos').mask('#.##0,00', {reverse: true});
     </script>
   </th:block>
 </body>

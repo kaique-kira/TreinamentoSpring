@@ -1,10 +1,13 @@
 package br.com.treinaweb.twprojetos.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -28,8 +31,11 @@ public class Funcionario extends Pessoa {
     @DateTimeFormat(iso = ISO.DATE)
     private LocalDate dataDemissao;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cargo_id_fk", nullable = false)
     private Cargo cargo;
+
+    @ManyToMany(mappedBy = "equipe")
+    private List<Projeto> projetos;
 
 }

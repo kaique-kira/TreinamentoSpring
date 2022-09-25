@@ -49,8 +49,8 @@ public class ProjetorController {
 
         modelAndView.addObject("projeto", new Projeto());
         modelAndView.addObject("clientes", clienteRepository.findAll());
-        modelAndView.addObject("lideres", funcionarioRepository.findAll());
-        modelAndView.addObject("funcionarios", funcionarioRepository.findAll());
+        modelAndView.addObject("lideres", funcionarioRepository.findByCargoNome("Gerente"));
+        modelAndView.addObject("funcionarios", funcionarioRepository.findByCargoNomeNot("Gerente"));
 
         return modelAndView;
     }
@@ -61,8 +61,8 @@ public class ProjetorController {
 
         modelAndView.addObject("cliente", projetoRepository.getOne(id));
         modelAndView.addObject("clientes", clienteRepository.findAll());
-        modelAndView.addObject("lideres", funcionarioRepository.findAll());
-        modelAndView.addObject("funcionarios", funcionarioRepository.findAll());
+        modelAndView.addObject("lideres", funcionarioRepository.findByCargoNome("Gerente"));
+        modelAndView.addObject("funcionarios", funcionarioRepository.findByCargoNomeNot("Gerente"));
 
         return modelAndView;
     }

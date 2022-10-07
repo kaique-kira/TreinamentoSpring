@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.treinaweb.twprojetos.entity.Funcionario;
-import br.com.treinaweb.twprojetos.entity.UF;
+import br.com.treinaweb.twprojetos.enums.UF;
 import br.com.treinaweb.twprojetos.repository.CargoRepository;
 import br.com.treinaweb.twprojetos.repository.FuncionarioRepository;
 

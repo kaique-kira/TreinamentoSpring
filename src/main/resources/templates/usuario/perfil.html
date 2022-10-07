@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout (~{::title}, ~{::main}, _, ~{::scripts})}">
+
+<head>
+  <title>Perfil do Usuário</title>
+</head>
+
+<body>
+  <main>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle" id="profile-user-img" alt="User profile picture">
+                </div>
+
+                <h3 class="profile-username text-center" th:text="${usuario.nome}">Nina Mcintire</h3>
+
+                <p class="text-muted text-center" th:text="${usuario.cargo.nome}">Software Engineer</p>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+            <!-- About Me Box -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Dados Pessoais</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <strong><i class="fas fa-book mr-1"></i> CPF</strong>
+                <p class="text-muted" th:text="${usuario.cpf}">
+                  484.325.821-07
+                </p>
+
+                <hr>
+
+                <strong><i class="fas fa-mobile mr-1"></i> Telefone</strong>
+                <p class="text-muted" th:text="${usuario.telefone}">(82) 98881-5053</p>
+
+                <hr>
+
+                <strong><i class="fas fa-envelope mr-1"></i> E-mail</strong>
+                <p class="text-muted" id="email" th:text="${usuario.email}">nina@mail.com</p>
+
+                <hr>
+
+                <strong><i class="fas fa-calendar-alt mr-1"></i> Data de Nascimento</strong>
+                <p class="text-muted" th:text="${#temporals.format(usuario.dataNascimento)}">
+                  30 de maio de 1981
+                </p>
+
+                <hr>
+                
+                <strong><i class="fas fa-calendar-alt mr-1"></i> Data de Admissão</strong>
+                <p class="text-muted" th:text="${#temporals.format(usuario.dataAdmissao)}">
+                  30 de maio de 1981
+                </p>
+
+                <hr>
+                
+                <div th:if="${usuario.dataDemissao != null}">
+                  <strong><i class="fas fa-calendar-alt mr-1"></i> Data de Demissão</strong>
+                  <p class="text-muted" th:text="${#temporals.format(usuario.dataDemissao)}">
+                    30 de maio de 1981
+                  </p>
+
+                  <hr>
+                </div>
+
+                <strong><i class="fas fa-map-marker-alt mr-1"></i> Endereço</strong>
+                <p class="text-muted" th:text="${usuario.endereco}">Malibu, California</p>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link active" href="#projetos" data-toggle="tab">Projetos</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#mudar-senha" data-toggle="tab">Atualizar Senha</a></li>
+                </ul>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="active tab-pane" id="projetos">
+                    <!-- The timeline -->
+                    <div class="timeline">
+                      <!-- timeline item -->
+                      <div th:each="projeto : ${usuario.projetos}">
+                        <i class="fas fa-project-diagram bg-primary"></i>
+    
+                        <div class="timeline-item">
+                          <span class="time">
+                            <i class="far fa-clock"></i> <span th:text="${#temporals.format(projeto.dataInicio)}"></span>
+                          </span>
+    
+                          <h3 class="timeline-header" th:text="${projeto.nome}"></h3>
+    
+                          <div class="timeline-body" th:text="${projeto.descricao}">
+                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                            weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                            jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                            quora plaxo ideeli hulu weebly balihoo...
+                          </div>
+                          <div class="timeline-footer">
+                            <a th:href="@{/projetos/{id} (id=${projeto.id})}" class="btn btn-primary btn-sm">Detalhes</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="mudar-senha">
+                    <form class="form-horizontal" method="POST" th:action="@{/alterar-senha}" th:object="${alterarSenhaForm}">
+                      <div class="form-group row">
+                        <label for="senhaAtual" class="col-sm-2 col-form-label">Senha atual</label>
+                        <div class="col-sm-10">
+                          <input type="password" class="form-control" th:field="*{senhaAtual}">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="novaSenha" class="col-sm-2 col-form-label">Nova senha</label>
+                        <div class="col-sm-10">
+                          <input type="password" class="form-control" th:field="*{novaSenha}">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                          <button type="submit" class="btn btn-primary">Alterar senha</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+    </div>
+  </main>
+
+  <th:block th:fragment="scripts">
+    <script th:src="@{/js/avatar.min.js}"></script>
+    <script>
+      const email = document.getElementById("email").innerText;
+
+      const avatar = Avatar.from(document.getElementById('profile-user-img'), {
+        'email': email
+      });
+    </script>
+  </th:block>
+</body>
+
+</html>
